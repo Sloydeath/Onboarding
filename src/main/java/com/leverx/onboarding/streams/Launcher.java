@@ -44,5 +44,7 @@ public class Launcher {
         taskService.printTasks(tasks);
         System.out.println("\n");
         Convert.convertTasksToTaskDto(tasks).forEach(System.out::println);
+        System.out.println("\n");
+        studentService.printRatingReport(students);
     }
 }

@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface StudentService {
     void printAvgRatingBySubject(List<Student> student, Subject subject);
+    void printRatingReport(List<Student> students);
 }
