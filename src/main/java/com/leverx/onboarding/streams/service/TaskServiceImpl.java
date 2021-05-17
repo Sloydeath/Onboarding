@@ -18,4 +18,28 @@ public class TaskServiceImpl implements TaskService {
                 .collect(Collectors.joining(", "));
         System.out.println(titles);
     }
+
+    @Override
+    public void printGroupByTitle(List<Task> tasks) {
+        System.out.println(tasks.stream()
+                .collect(Collectors.groupingBy(Task::getTitle)));
+    }
+
+    @Override
+    public void printGroupByDone(List<Task> tasks) {
+        System.out.println(tasks.stream()
+            .collect(Collectors.groupingBy(Task::isDone)));
+    }
+
+    @Override
+    public void printGroupByCreatedOn(List<Task> tasks) {
+        System.out.println(tasks.stream()
+                .collect(Collectors.groupingBy(Task::getCreatedOn)));
+    }
+
+    @Override
+    public void printGroupByTags(List<Task> tasks) {
+        System.out.println(tasks.stream()
+                .collect(Collectors.groupingBy(Task::getTags)));
+    }
 }

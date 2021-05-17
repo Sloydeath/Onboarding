@@ -1,7 +1,12 @@
 package com.leverx.onboarding.streams.model;
 
 import com.leverx.onboarding.streams.model.enums.TaskType;
-import lombok.*;
+import lombok.Setter;
+import lombok.Getter;
+import lombok.ToString;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 
 import java.time.LocalDate;
 import java.util.HashSet;

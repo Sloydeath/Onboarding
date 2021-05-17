@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface TaskService {
     void printTasks(List<Task> tasks);
+    void printGroupByTitle(List<Task> tasks);
+    void printGroupByDone(List<Task> tasks);
+    void printGroupByCreatedOn(List<Task> tasks);
+    void printGroupByTags(List<Task> tasks);
 }

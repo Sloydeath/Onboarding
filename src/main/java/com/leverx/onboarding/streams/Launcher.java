@@ -8,7 +8,7 @@ import com.leverx.onboarding.streams.service.StudentService;
 import com.leverx.onboarding.streams.service.StudentServiceImpl;
 import com.leverx.onboarding.streams.service.TaskService;
 import com.leverx.onboarding.streams.service.TaskServiceImpl;
-import com.leverx.onboarding.streams.util.Convert;
+import com.leverx.onboarding.streams.util.Converter;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -39,12 +39,21 @@ public class Launcher {
     public static void main(String[] args) {
         StudentService studentService = new StudentServiceImpl();
         TaskService taskService = new TaskServiceImpl();
+
         studentService.printAvgRatingBySubject(students, Subject.MATH);
         System.out.println("\n");
         taskService.printTasks(tasks);
         System.out.println("\n");
-        Convert.convertTasksToTaskDto(tasks).forEach(System.out::println);
+        Converter.convertTasksToTaskDto(tasks).forEach(System.out::println);
         System.out.println("\n");
         studentService.printRatingReport(students);
+        System.out.println("\n");
+        taskService.printGroupByTitle(tasks);
+        System.out.println("\n");
+        taskService.printGroupByDone(tasks);
+        System.out.println("\n");
+        taskService.printGroupByTags(tasks);
+        System.out.println("\n");
+        taskService.printGroupByCreatedOn(tasks);
     }
 }
