@@ -8,13 +8,14 @@ import com.leverx.onboarding.streams.service.StudentService;
 import com.leverx.onboarding.streams.service.StudentServiceImpl;
 import com.leverx.onboarding.streams.service.TaskService;
 import com.leverx.onboarding.streams.service.TaskServiceImpl;
-import com.leverx.onboarding.streams.util.Converter;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static com.leverx.onboarding.streams.mapper.TaskMapper.*;
 
 public class Launcher {
 
@@ -23,9 +24,9 @@ public class Launcher {
 
     static {
         students.add(new Student("Andrew").rate(Subject.MATH, 8).rate(Subject.CHEMISTRY, 10).rate(Subject.ENGLISH, 5));
-        students.add(new Student("Danila").rate(Subject.MATH, 5).rate(Subject.CHEMISTRY, 7).rate(Subject.ENGLISH, 9));
+        students.add(new Student("Danila").rate(Subject.MATH, 5).rate(Subject.ENGLISH, 9));
         students.add(new Student("Artyom").rate(Subject.MATH, 3).rate(Subject.CHEMISTRY, 5).rate(Subject.ENGLISH, 4));
-        students.add(new Student("Pasha").rate(Subject.MATH, 10).rate(Subject.CHEMISTRY, 10).rate(Subject.ENGLISH, 10));
+        students.add(new Student("Pasha").rate(Subject.CHEMISTRY, 10).rate(Subject.ENGLISH, 10));
         students.add(new Student("Zhenya").rate(Subject.MATH, 6).rate(Subject.CHEMISTRY, 1).rate(Subject.ENGLISH, 6));
 
         Task task1 = new Task("Read Version Control with Git book", TaskType.READING, LocalDate.of(2015, Month.JULY, 1)).addTag("git").addTag("reading").addTag("books");
@@ -40,13 +41,13 @@ public class Launcher {
         StudentService studentService = new StudentServiceImpl();
         TaskService taskService = new TaskServiceImpl();
 
-        studentService.printAvgRatingBySubject(students, Subject.MATH);
+        studentService.getAverageRatingBySubject(students, Subject.MATH);
         System.out.println("\n");
-        taskService.printTasks(tasks);
+        taskService.getTasks(tasks);
         System.out.println("\n");
-        Converter.convertTasksToTaskDto(tasks).forEach(System.out::println);
+        convertTasksToTaskDto(tasks).forEach(System.out::println);
         System.out.println("\n");
-        studentService.printRatingReport(students);
+        studentService.getRatingReport(students);
         System.out.println("\n");
         taskService.printGroupByTitle(tasks);
         System.out.println("\n");

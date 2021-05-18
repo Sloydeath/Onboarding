@@ -6,6 +6,6 @@ import com.leverx.onboarding.streams.model.enums.Subject;
 import java.util.List;
 
 public interface StudentService {
-    void printAvgRatingBySubject(List<Student> student, Subject subject);
-    void printRatingReport(List<Student> students);
+    void getAverageRatingBySubject(List<Student> student, Subject subject);
+    void getRatingReport(List<Student> students);
 }

@@ -6,28 +6,42 @@ import com.leverx.onboarding.streams.model.enums.Subject;
 import java.util.Arrays;
 import java.util.List;
 import java.util.OptionalDouble;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 public class StudentServiceImpl implements StudentService {
 
     @Override
-    public void printAvgRatingBySubject(List<Student> students, Subject subject) {
-        OptionalDouble averageRating = students.stream().mapToInt(s -> s.getRating().get(subject)).average();
+    public void getAverageRatingBySubject(List<Student> students, Subject subject) {
+        OptionalDouble averageRating = students.stream()
+                .filter(student -> student.getRating().containsKey(subject))
+                .mapToInt(student -> student.getRating().get(subject))
+                .average();
         if (averageRating.isPresent()) {
             System.out.printf("%s average rating is %.2f", subject, averageRating.getAsDouble());
         }
     }
 
     @Override
-    public void printRatingReport(List<Student> students) {
+    public void getRatingReport(List<Student> students) {
         List<Subject> subjects = Arrays.asList(Subject.values());
 
-        System.out.println(subjects.stream()
+        String ratingReport = subjects.stream()
                 .map(subject -> subject + ": (" +
-                        students.stream()
-                            .map(student -> student.getName() + ": " + student.getRating().get(subject))
-                            .collect(Collectors.joining(", ")) +
+                        getStudentsWithRating(students, subject) +
                         ")")
-                .collect(Collectors.joining("\n")));
+                .collect(joining("\n"));
+        printRatingReport(ratingReport);
+    }
+
+    private String getStudentsWithRating(List<Student> students, Subject subject) {
+        return students.stream()
+                .filter(student -> student.getRating().containsKey(subject))
+                .map(student -> student.getName() + ": " + student.getRating().get(subject))
+                .collect(joining(", "));
+    }
+
+    private void printRatingReport(String ratingReport) {
+        System.out.println(ratingReport);
     }
 }
