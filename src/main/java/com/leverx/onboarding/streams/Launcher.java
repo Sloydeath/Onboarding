@@ -1,13 +1,9 @@
 package com.leverx.onboarding.streams;
 
-import com.leverx.onboarding.streams.model.Student;
-import com.leverx.onboarding.streams.model.Task;
-import com.leverx.onboarding.streams.model.enums.Subject;
-import com.leverx.onboarding.streams.model.enums.TaskType;
-import com.leverx.onboarding.streams.service.StudentService;
-import com.leverx.onboarding.streams.service.StudentServiceImpl;
-import com.leverx.onboarding.streams.service.TaskService;
-import com.leverx.onboarding.streams.service.TaskServiceImpl;
+import com.leverx.onboarding.streams.model.*;
+import com.leverx.onboarding.streams.model.enums.*;
+import com.leverx.onboarding.streams.service.*;
+import com.leverx.onboarding.streams.service.interfaces.*;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -20,6 +16,7 @@ import static com.leverx.onboarding.streams.mapper.TaskMapper.*;
 public class Launcher {
 
     private static final List<Student> students = new ArrayList<>();
+    private static final List<Person> persons = new ArrayList<>();
     private static final List<Task> tasks;
 
     static {
@@ -35,11 +32,32 @@ public class Launcher {
         Task task4 = new Task("Write a blog on Java 8 Streams", TaskType.WRITING, LocalDate.of(2015, Month.JULY, 4)).addTag("blogging").addTag("writing").addTag("streams");
         Task task5 = new Task("Read Domain Driven Design book", TaskType.READING, LocalDate.of(2015, Month.JUNE, 5)).addTag("ddd").addTag("books").addTag("reading");
         tasks = Arrays.asList(task1, task2, task3, task4, task5);
+
+        persons.add(new Person(1L, "Lokesh", new Skill("English", 10),
+                new Skill("Kannada", 20), new Skill("Hindi", 10)));
+
+        persons.add(new Person(2L, "Mahesh", new Skill("English", 10),
+                new Skill("Kannada", 30), new Skill("Hindi", 50)));
+
+        persons.add(new Person(3L, "Ganesh", new Skill("English", 10),
+                new Skill("Kannada", 20), new Skill("Hindi", 40)));
+
+        persons.add(new Person(4L, "Ramesh", new Skill("English", 10),
+                new Skill("Kannada", 20), new Skill("Hindi", 40)));
+
+        persons.add(new Person(5L, "Suresh", new Skill("English", 10),
+                new Skill("Kannada", 40), new Skill("Hindi", 40)));
+
+        persons.add(new Person(6L, "Gnanesh", new Skill("English", 100),
+                new Skill("Kannada", 20), new Skill("Hindi", 40)));
+
     }
 
     public static void main(String[] args) {
+        PersonService personService = new PersonServiceImpl();
         StudentService studentService = new StudentServiceImpl();
         TaskService taskService = new TaskServiceImpl();
+        StringService stringService = new StringServiceImpl();
 
         studentService.getAverageRatingBySubject(students, Subject.MATH);
         System.out.println("\n");
@@ -56,5 +74,10 @@ public class Launcher {
         taskService.printGroupByTags(tasks);
         System.out.println("\n");
         taskService.printGroupByCreatedOn(tasks);
+        System.out.println("\n");
+        System.out.println(stringService.getMostCommonChar("safdsdgfdsgh"));
+        System.out.println("\n");
+        System.out.println(personService.findBestMatchingPerson(persons, new Skill("English", 50), new Skill("Kannada", 50),
+                new Skill("Urdu", 50), new Skill("Hindi", 50)));
     }
 }
