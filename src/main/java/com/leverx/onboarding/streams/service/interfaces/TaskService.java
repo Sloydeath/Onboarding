@@ -1,4 +1,4 @@
-package com.leverx.onboarding.streams.service;
+package com.leverx.onboarding.streams.service.interfaces;
 
 import com.leverx.onboarding.streams.model.Task;
 
