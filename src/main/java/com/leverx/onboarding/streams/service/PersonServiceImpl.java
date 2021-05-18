@@ -12,11 +12,10 @@ import static java.util.stream.Collectors.*;
 public class PersonServiceImpl implements PersonService {
 
     @Override
-    public String findBestMatchingPerson(List<Person> persons, Skill ... skills) {
-        List<Skill> skillsList = Arrays.stream(skills).distinct().collect(Collectors.toList());
-        return skillsList.stream()
+    public String findBestMatchingPerson(List<Person> people, Skill ... skills) {
+        return Arrays.stream(skills)
                 .distinct()
-                .map(skill -> skill.getName() + ": " + findAppropriatePersonBySkill(persons, skill)
+                .map(skill -> skill.getName() + ": " + findAppropriatePersonBySkill(people, skill)
                 )
                 .collect(joining(", ", "[", "]"));
     }
