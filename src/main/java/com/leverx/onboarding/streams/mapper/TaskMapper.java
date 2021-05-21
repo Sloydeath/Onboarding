@@ -7,7 +7,6 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-
 public class TaskMapper {
     public static List<TaskDto> convertTasksToTaskDto(List<Task> tasks){
         return tasks.stream()
@@ -18,6 +17,6 @@ public class TaskMapper {
                         .createdOn(task.getCreatedOn())
                         .tags(task.getTags())
                         .build())
-                .collect(toList());
+                .collect(Collectors.toList());
     }
 }

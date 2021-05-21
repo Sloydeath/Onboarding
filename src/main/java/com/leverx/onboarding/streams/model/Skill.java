@@ -1,10 +1,8 @@
 package com.leverx.onboarding.streams.model;
 
+import lombok.*;
 
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.Objects;
+import java.util.*;
 
 @Setter
 @Getter
