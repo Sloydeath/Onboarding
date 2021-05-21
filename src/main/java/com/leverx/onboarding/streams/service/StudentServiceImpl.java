@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.OptionalDouble;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.joining;
 
 public class StudentServiceImpl implements StudentService {
 

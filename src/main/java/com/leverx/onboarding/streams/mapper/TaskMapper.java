@@ -5,7 +5,7 @@ import com.leverx.onboarding.streams.model.Task;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toList;
 
 
 public class TaskMapper {

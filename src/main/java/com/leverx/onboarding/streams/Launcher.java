@@ -19,9 +19,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.leverx.onboarding.streams.mapper.TaskMapper.*;
-import static com.leverx.onboarding.streams.model.enums.Subject.*;
-import static com.leverx.onboarding.streams.model.enums.TaskType.*;
+import static com.leverx.onboarding.streams.mapper.TaskMapper.convertTasksToTaskDto;
+import static com.leverx.onboarding.streams.model.enums.Subject.CHEMISTRY;
+import static com.leverx.onboarding.streams.model.enums.Subject.MATH;
+import static com.leverx.onboarding.streams.model.enums.Subject.ENGLISH;
+import static com.leverx.onboarding.streams.model.enums.TaskType.READING;
+import static com.leverx.onboarding.streams.model.enums.TaskType.CODING;
+import static com.leverx.onboarding.streams.model.enums.TaskType.WRITING;
+import static java.util.Calendar.JULY;
+import static java.util.Calendar.JUNE;
+
 
 public class Launcher {
 
@@ -36,11 +43,11 @@ public class Launcher {
         students.add(new Student("Pasha").rate(CHEMISTRY, 10).rate(ENGLISH, 10));
         students.add(new Student("Zhenya").rate(MATH, 6).rate(CHEMISTRY, 1).rate(ENGLISH, 6));
 
-        Task task1 = new Task("Read Version Control with Git book", READING, LocalDate.of(2015, Month.JULY, 1)).addTag("git").addTag("reading").addTag("books");
-        Task task2 = new Task("Read Java 8 Lambdas book", READING, LocalDate.of(2015, Month.JULY, 2)).addTag("java8").addTag("reading").addTag("books");
+        Task task1 = new Task("Read Version Control with Git book", READING, LocalDate.of(2015, JULY, 1)).addTag("git").addTag("reading").addTag("books");
+        Task task2 = new Task("Read Java 8 Lambdas book", READING, LocalDate.of(2015, JULY, 2)).addTag("java8").addTag("reading").addTag("books");
         Task task3 = new Task("Write a mobile application to store my tasks", CODING, LocalDate.of(2015, Month.JULY, 3)).addTag("coding").addTag("mobile");
-        Task task4 = new Task("Write a blog on Java 8 Streams", WRITING, LocalDate.of(2015, Month.JULY, 4)).addTag("blogging").addTag("writing").addTag("streams");
-        Task task5 = new Task("Read Domain Driven Design book", READING, LocalDate.of(2015, Month.JUNE, 5)).addTag("ddd").addTag("books").addTag("reading");
+        Task task4 = new Task("Write a blog on Java 8 Streams", WRITING, LocalDate.of(2015, JULY, 4)).addTag("blogging").addTag("writing").addTag("streams");
+        Task task5 = new Task("Read Domain Driven Design book", READING, LocalDate.of(2015, JUNE, 5)).addTag("ddd").addTag("books").addTag("reading");
         tasks = Arrays.asList(task1, task2, task3, task4, task5);
 
         persons.add(new Person(1L, "Lokesh", new Skill("English", 10),
