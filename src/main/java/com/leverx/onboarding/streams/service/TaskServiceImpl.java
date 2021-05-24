@@ -1,7 +1,7 @@
 package com.leverx.onboarding.streams.service;
 
 import com.leverx.onboarding.streams.model.Task;
-import com.leverx.onboarding.streams.service.interfaces.*;
+import com.leverx.onboarding.streams.service.interfaces.TaskService;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package com.leverx.onboarding.streams.service;
 
 import com.leverx.onboarding.streams.model.Student;
 import com.leverx.onboarding.streams.model.enums.Subject;
-import com.leverx.onboarding.streams.service.interfaces.*;
+import com.leverx.onboarding.streams.service.interfaces.StudentService;
 
 import java.util.Arrays;
 import java.util.List;

@@ -29,6 +29,7 @@ import static com.leverx.onboarding.streams.model.enums.TaskType.WRITING;
 import static java.util.Calendar.JULY;
 import static java.util.Calendar.JUNE;
 
+
 public class Launcher {
 
     private static final List<Student> students = new ArrayList<>();
@@ -47,7 +48,6 @@ public class Launcher {
         Task task3 = new Task("Write a mobile application to store my tasks", CODING, LocalDate.of(2015, Month.JULY, 3)).addTag("coding").addTag("mobile");
         Task task4 = new Task("Write a blog on Java 8 Streams", WRITING, LocalDate.of(2015, JULY, 4)).addTag("blogging").addTag("writing").addTag("streams");
         Task task5 = new Task("Read Domain Driven Design book", READING, LocalDate.of(2015, JUNE, 5)).addTag("ddd").addTag("books").addTag("reading");
-
         tasks = Arrays.asList(task1, task2, task3, task4, task5);
 
         persons.add(new Person(1L, "Lokesh", new Skill("English", 10),
@@ -63,7 +63,7 @@ public class Launcher {
                 new Skill("Kannada", 20), new Skill("Hindi", 40)));
 
         persons.add(new Person(5L, "Suresh", new Skill("English", 10),
-                new Skill("Kannada", 40), new Skill("Hindi", 40)));
+                new Skill("Kannada", 40), new Skill("Hindi", 70)));
 
         persons.add(new Person(6L, "Gnanesh", new Skill("English", 100),
                 new Skill("Kannada", 20), new Skill("Hindi", 40)));
@@ -76,7 +76,7 @@ public class Launcher {
         TaskService taskService = new TaskServiceImpl();
         StringService stringService = new StringServiceImpl();
 
-        studentService.getAverageRatingBySubject(students, Subject.MATH);
+        studentService.getAverageRatingBySubject(students, MATH);
         System.out.println("\n");
         taskService.getTasks(tasks);
         System.out.println("\n");
@@ -92,7 +92,7 @@ public class Launcher {
         System.out.println("\n");
         taskService.printGroupByCreatedOn(tasks);
         System.out.println("\n");
-        System.out.println(stringService.getMostCommonChar("safdsdgfdsgh"));
+        System.out.println(stringService.getMostCommonChar("Hello, world!"));
         System.out.println("\n");
         System.out.println(personService.findBestMatchingPerson(persons, new Skill("English", 50), new Skill("Kannada", 50),
                 new Skill("Urdu", 50), new Skill("Hindi", 50)));

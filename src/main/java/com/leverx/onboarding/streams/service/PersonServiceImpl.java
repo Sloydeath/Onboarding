@@ -1,10 +1,12 @@
 package com.leverx.onboarding.streams.service;
 
-import com.leverx.onboarding.streams.model.*;
-import com.leverx.onboarding.streams.service.interfaces.*;
+import com.leverx.onboarding.streams.model.Person;
+import com.leverx.onboarding.streams.model.Skill;
+import com.leverx.onboarding.streams.service.interfaces.PersonService;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.joining;
@@ -46,7 +48,7 @@ public class PersonServiceImpl implements PersonService {
 
     private String anotherVariant(List<Person> persons, Skill ... skills) {
         StringBuilder report = new StringBuilder();
-        List<Skill> skillsList = Arrays.stream(skills).distinct().collect(Collectors.toList());
+        List<Skill> skillsList = Arrays.stream(skills).distinct().collect(toList());
 
         report.append("[");
         for (Skill skill: skillsList) {
@@ -80,70 +82,3 @@ public class PersonServiceImpl implements PersonService {
         return report.toString();
     }
 }
-
-
-
-
-
-
-
-/*
-        Arrays.stream(skills)
-                .distinct()
-                .map(skill -> skill + ": " +
-                        persons.stream()
-                        .flatMap(person -> person.getSkills().stream()
-                                .max(Comparator.comparing(s))
-                                .filter(personSkill -> personSkill.getKnownPercentage() > skill.getKnownPercentage())
-                                .filter(filteredPersonSkill -> filteredPersonSkill)
-                                )
-                        )
-                )
-
-
-
-        StringBuilder report = new StringBuilder();
-        report.append("[");
-        for (Skill skill: skills) {
-            report.append(skill).append(": ");
-            for (Person person: persons) {
-                person.getSkills()
-            }
-        }
-
-
-
-                                persons.stream()
-                                .flatMap(person -> person.getSkills().stream()
-                                        .max(Comparator.comparing(s))
-                                        .filter(personSkill -> personSkill.getKnownPercentage() > skill.getKnownPercentage())
-                                        .filter(filteredPersonSkill -> filteredPersonSkill)
-                                )
-
-
-
-                                                  .map(skill -> skill.getName() + ": " +
-                        persons.stream()
-                                .max(Comparator.comparing(person -> person.getSkills().stream()
-                                        .filter(personSkill -> personSkill.getName().equals(skill.getName()))
-                                        .filter(personSkill -> personSkill.getKnownPercentage() > skill.getKnownPercentage())
-                                        .max(Comparator.comparing(Skill::getKnownPercentage)).get().getKnownPercentage())
-                                ))
-                */
-
-/*     return skillsList.stream()
-                .distinct()
-                .map(skill -> skill.getName() + ": " +
-                        persons.stream()
-                                .flatMap(person -> person.getSkills().stream())
-                                .filter(personSkill -> personSkill.getName().equals(skill.getName()))
-                                .filter(personSkill -> personSkill.getKnownPercentage() > skill.getKnownPercentage())
-                                .max(Comparator.comparing(Skill::getKnownPercentage))
-                                .orElse(persons.stream()
-                                        .flatMap(person -> person.getSkills().stream())
-                                        .filter(personSkill -> personSkill.getName().equals(skill.getName()))
-                                        .filter(personSkill -> personSkill.getKnownPercentage() <= skill.getKnownPercentage())
-                                        .max(Comparator.comparing(Skill::getKnownPercentage))
-                                .orElse(null))
-                )
-                .collect(joining(", ", "[", "]"));*/

@@ -5,6 +5,7 @@ import com.leverx.onboarding.streams.model.Skill;
 
 import java.util.List;
 
+
 public interface PersonService {
     String findBestMatchingPerson(List<Person> people, Skill... skills);
 }
