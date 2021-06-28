@@ -1,13 +1,14 @@
 package com.leverx.onboarding.streams.service;
 
 import com.leverx.onboarding.streams.model.Task;
-import com.leverx.onboarding.streams.service.interfaces.*;
+import com.leverx.onboarding.streams.service.interfaces.TaskService;
 
 import java.util.List;
 
-import static com.leverx.onboarding.streams.model.enums.TaskType.*;
-import static java.util.Comparator.*;
-import static java.util.stream.Collectors.*;
+import static com.leverx.onboarding.streams.model.enums.TaskType.READING;
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.joining;
 
 public class TaskServiceImpl implements TaskService {
     @Override

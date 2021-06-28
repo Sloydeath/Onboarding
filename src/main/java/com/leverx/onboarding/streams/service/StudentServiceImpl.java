@@ -2,13 +2,13 @@ package com.leverx.onboarding.streams.service;
 
 import com.leverx.onboarding.streams.model.Student;
 import com.leverx.onboarding.streams.model.enums.Subject;
-import com.leverx.onboarding.streams.service.interfaces.*;
+import com.leverx.onboarding.streams.service.interfaces.StudentService;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.OptionalDouble;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.joining;
 
 public class StudentServiceImpl implements StudentService {
 
